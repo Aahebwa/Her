@@ -1,0 +1,31 @@
+{% extends 'master.html' %}
+{% block content %}
+        <h1>Course Units</h1>
+        <div class="course_unit_container">
+
+          {% for course_unit in course_units %}
+                <div class="course_unit_card">
+                  <a href="{% url 'dashboard:details' course_unit.slug %}">
+                    <ul>
+                      <li>
+                        <h2>{{ course_unit.unit_title }}</h2>
+                      </li>
+                      <li>
+                        <h3>{{ course_unit.course_code }}</h3>
+                      </li>
+                      <li>
+                        <p>{{ course_unit.unit_description|slice:"50" }}...</p>
+                      </li>
+                      <li>
+                        <h3>Author:{{ course_unit.unit_author }}</h3>
+                      </li>
+                    </ul>
+                  </a>
+                </div>
+          {% endfor %}
+        </div>
+
+        {% if user.is_superuser %}
+          <a href={% url 'dashboard:add_course_unit' %}>Add Course Unit</a>
+        {% endif %}
+{% endblock %}

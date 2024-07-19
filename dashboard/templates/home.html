@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+{% block content %}
+        <div class="cards-container">
+            <a href="{% url 'dashboard:it' %}">
+                <div class="card">
+                    <p class="course-link">IT<p>
+                </div>
+            </a>
+
+            <a href="{% url 'dashboard:electronics' %}">
+                <div class="card">
+                    <p class="course-link">ELECTRONICS</p>
+                </div>
+            </a>
+        </div>
+
+{% endblock %}

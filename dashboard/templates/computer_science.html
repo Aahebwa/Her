@@ -1,0 +1,23 @@
+{% extends 'master.html' %}
+{% block content %}
+<div class="hero-content course_heading">
+  <h2>DIPLOMA IN COMPUTER SCIENCE</h2>
+</div>
+
+<a href="{% url 'dashboard:file_list' %}">
+  <div class="card">
+    <h3>Course Units</h3>
+  </div>
+</a>
+
+<div class="recent_box">
+  <h2>Recent Files</h2>
+{% for file in files %}
+    <div class="card">
+        <li class="recent_file">
+            <a href="{{file.file.url}}">{{ file.file_title }}</a>
+        </li>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

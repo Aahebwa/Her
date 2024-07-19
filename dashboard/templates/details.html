@@ -1,0 +1,27 @@
+{% extends 'master.html' %}
+{% block content %}
+  <div class="card">
+    <h2>{{ detail.unit_title }}</h2>
+    <h3>{{ detail.course_code }}</h3>
+    <p class="unit_description">{{ detail.unit_description }}</p>
+    <p>Author:{{ detail.unit_author }}</p>
+
+    <p class="unit_description">Notes</p>
+    {% for file in files %}
+      {% if file.file_author == detail.unit_author%}
+      <a href="{{ file.file.url }}">
+        <div class="card">
+            <li class="recent_file">
+                {{ file.file_title }}
+            </li>
+        </div>
+      </a>
+      {% endif %}
+    {% endfor %}
+
+    {% if detail.unit_author == request.user %}
+      <a href="{% url 'dashboard:upload_file' %}">Upload File</a>
+    {% endif %}
+  </div>
+
+{% endblock %}

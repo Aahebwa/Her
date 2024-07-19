@@ -1,0 +1,10 @@
+{% extends 'master.html' %}
+{% block content %}
+<div class="card form-card">
+  <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-read-more btn-1">Submit</button>
+  </form>
+</div>
+{% endblock %}

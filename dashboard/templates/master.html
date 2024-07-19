@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script type="text/javascript" src="{% static 'script.js' %}">
+
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>eLEARNING</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" class="home">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="{% url 'dashboard:home' %}">Courses</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                    <div class="join-now">
+                        <a href="{% url 'dashboard:add_course_unit' %}">Create</a>
+                        <a href="{% url 'dashboard:logout' %}">Logout</a>
+                    </div>
+                {% else %}
+                    <div class="join-now">
+                        <a href="{% url 'dashboard:logout' %}">Logout</a>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="join-now">
+                    <a href="{% url 'dashboard:signup' %}">Join Now</a>
+                </div>
+            {% endif %}
+        </div>
+    </header>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'master.html' %}
+{% block content %}
+<section class="hero">
+        <div class="container">
+            <div class="hero-content">
+              <div class="hero-content-container">
+                <div class="hero-content-left">
+                  <h2>Best Online Courses</h2>
+                  <h1>Get Educated Online<br> From Your Home</h1>
+                  <div class="text">
+
+                  </div>
+                </div>
+                <div class="hero-content-right">
+                  <img src="static\th.jpeg" alt="">
+                </div>
+              </div>
+
+                <div class="buttons">
+                    {% if user.is_authenticated %}
+                      <h2 class="auto-type"></h2>
+                    {% else %}
+                        <a href="{% url 'dashboard:login' %}" class="btn btn-read-more">Login</a>
+                        <a href="{% url 'dashboard:signup' %}" class="btn btn-join-now">Join Now</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock%}
